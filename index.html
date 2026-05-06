@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nigel Prentice</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: #0d0d0d;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
+    color: #fff;
+  }
+
+  /* ── Slideshow container ── */
+  .deck {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* ── Individual slides ── */
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+  }
+  .slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── Full-bleed image helper ── */
+  .slide-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* ── Overlays ── */
+  .overlay-dark   { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
+  .overlay-light  { position: absolute; inset: 0; background: rgba(255,255,255,0.88); }
+  .overlay-subtle { position: absolute; inset: 0; background: rgba(0,0,0,0.22); }
+  .overlay-mid    { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+
+  /* ── Content layers ── */
+  .slide-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 1 — Hero
+  ───────────────────────────────────────────── */
+  #s1 .slide-img {
+    background-image: url('images/slide_bg.jpg');
+    background-position: 35% center;
+  }
+  #s1 .hero-text {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+  }
+  #s1 .hero-text h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #fff;
+  }
+  #s1 .hero-text p {
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 2 — Stats
+  ───────────────────────────────────────────── */
+  #s2 .slide-img {
+    background-image: url('images/slide_bg.jpg');
+    background-position: 35% center;
+    filter: brightness(0.55);
+  }
+  #s2 .stats {
+    display: flex;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: flex-start;
+  }
+  #s2 .stat { text-align: center; }
+  #s2 .stat .num {
+    font-family: Georgia, serif;
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #fff;
+  }
+  #s2 .stat .label {
+    margin-top: 0.8rem;
+    font-size: clamp(0.62rem, 1.1vw, 0.75rem);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+  #s2 .stat-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.18);
+    align-self: center;
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 3 — Identity (Badges)
+  ───────────────────────────────────────────── */
+  #s3 .slide-img {
+    background-image: url('images/abstract_bg.png');
+    background-color: #f0eeea;
+    background-size: contain;
+    background-position: center;
+  }
+  #s3 .id-caption {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.28);
+    white-space: nowrap;
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 4 — Design Work
+  ───────────────────────────────────────────── */
+  #s4 .slide-img {
+    background-image: url('images/work_idt.jpg');
+    background-position: center 40%;
+  }
+  #s4 .work-text {
+    position: absolute;
+    bottom: 12%;
+    left: 8%;
+  }
+  #s4 .work-text h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: #fff;
+  }
+  #s4 .work-text p {
+    margin-top: 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 5 — Fortune Press
+  ───────────────────────────────────────────── */
+  #s5 { background: #111; }
+  #s5 .press-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: stretch;
+  }
+  #s5 .press-img-col {
+    flex: 0 0 46%;
+    background-image: url('images/nigel_portrait.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+  #s5 .press-text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6% 8%;
+    background: #111;
+  }
+  #s5 .press-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 2rem;
+  }
+  #s5 .press-headline {
+    font-family: Georgia, serif;
+    font-size: clamp(1.25rem, 2.2vw, 2rem);
+    font-weight: 400;
+    line-height: 1.4;
+    color: #fff;
+    margin-bottom: 2.8rem;
+  }
+  #s5 .press-meta {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.45rem 1.4rem;
+  }
+  #s5 .press-meta .key {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+  }
+  #s5 .press-meta .val {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 6 — IBM Studios Dublin
+  ───────────────────────────────────────────── */
+  #s6 .press-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  #s6 .dublin-img {
+    flex: 1;
+    background-image: url('images/ibm_opening_1.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  #s6 .dublin-img2 {
+    flex: 1;
+    background-image: url('images/ibm_studios.png');
+    background-size: cover;
+    background-position: center top;
+  }
+  #s6 .dublin-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  #s6 .dublin-caption h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(1.2rem, 2.2vw, 2rem);
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.8);
+  }
+  #s6 .dublin-caption p {
+    margin-top: 0.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    text-shadow: 0 1px 12px rgba(0,0,0,0.8);
+  }
+
+  /* ─────────────────────────────────────────────
+     SLIDE 7 — Career Timeline
+  ───────────────────────────────────────────── */
+  #s7 .slide-img {
+    background-image: url('images/abstract_bg.png');
+    background-color: #f0eeea;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(1.02) saturate(0.25);
+  }
+  #s7 .timeline {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+  #s7 .tl-item {
+    flex: 1;
+    padding: 0 4vw;
+    position: relative;
+  }
+  #s7 .tl-item + .tl-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.4rem;
+    width: 1px; height: 3rem;
+    background: rgba(0,0,0,0.12);
+  }
+  #s7 .tl-year {
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1;
+  }
+  #s7 .tl-role {
+    margin-top: 1rem;
+    font-size: clamp(0.68rem, 1.1vw, 0.82rem);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+    line-height: 1.6;
+  }
+  #s7 .tl-org {
+    font-size: clamp(0.58rem, 0.85vw, 0.7rem);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.32);
+    margin-top: 0.3rem;
+  }
+
+  /* ─────────────────────────────────────────────
+     Navigation arrows
+  ───────────────────────────────────────────── */
+  .nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1.8rem 1.4rem;
+    opacity: 0.2;
+    transition: opacity 0.35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn:hover { opacity: 0.65; }
+  .nav-btn.hidden { pointer-events: none; opacity: 0 !important; }
+  #btn-prev { left: 0; }
+  #btn-next { right: 0; }
+  .nav-btn svg {
+    width: 26px; height: 26px;
+    stroke: #fff;
+    stroke-width: 1.5;
+    fill: none;
+    display: block;
+  }
+
+  /* ── Slide dots ── */
+  .dots {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 7px;
+    z-index: 100;
+  }
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.35s ease, transform 0.35s ease;
+  }
+  .dot.active {
+    background: rgba(255,255,255,0.8);
+    transform: scale(1.4);
+  }
+
+  /* Light-slide overrides (badges + timeline slides) */
+  .deck.light-slide .dot       { background: rgba(0,0,0,0.15); }
+  .deck.light-slide .dot.active{ background: rgba(0,0,0,0.5); transform: scale(1.4); }
+  .deck.light-slide .nav-btn svg { stroke: #222; }
+
+  /* ── Slide counter ── */
+  .counter {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.25);
+    z-index: 100;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.4s;
+    user-select: none;
+  }
+  .deck.light-slide .counter { color: rgba(0,0,0,0.22); }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1 — Hero -->
+  <div class="slide active" id="s1">
+    <div class="slide-img"></div>
+    <div class="overlay-subtle"></div>
+    <div class="hero-text">
+      <h1>Hi,<br>I'm Nigel.</h1>
+      <p>nigel@nigelprentice.com</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — Stats -->
+  <div class="slide" id="s2">
+    <div class="slide-img"></div>
+    <div class="slide-content">
+      <div class="stats">
+        <div class="stat">
+          <div class="num">$400m</div>
+          <div class="label">Revenue<br>Influence</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="num">100s</div>
+          <div class="label">Products<br>Shipped</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <div class="num">25+</div>
+          <div class="label">Years Digital<br>Leadership</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — Identity -->
+  <div class="slide" id="s3">
+    <div class="slide-img"></div>
+    <span class="id-caption">Nigel Prentice</span>
+  </div>
+
+  <!-- SLIDE 4 — Design Work -->
+  <div class="slide" id="s4">
+    <div class="slide-img"></div>
+    <div class="overlay-mid"></div>
+    <div class="work-text">
+      <h2>Enterprise<br>Design Thinking</h2>
+      <p>IBM &nbsp;·&nbsp; Global Practice</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 — Fortune Press -->
+  <div class="slide" id="s5">
+    <div class="press-layout">
+      <div class="press-img-col"></div>
+      <div class="press-text-col">
+        <div class="press-tag">Feature &nbsp;·&nbsp; Fortune</div>
+        <div class="press-headline">How IBM is Training<br>Its Workforce to Think<br>Like Designers</div>
+        <div class="press-meta">
+          <span class="key">Journalist</span><span class="val">Brian O'Keefe</span>
+          <span class="key">Publisher</span><span class="val">Fortune</span>
+          <span class="key">Date</span><span class="val">December 2017 &amp; January 2018</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — IBM Studios Dublin -->
+  <div class="slide" id="s6">
+    <div class="press-layout">
+      <div class="dublin-img"></div>
+      <div class="dublin-img2"></div>
+    </div>
+    <div class="overlay-dark"></div>
+    <div class="dublin-caption">
+      <h2>IBM Studios Dublin</h2>
+      <p>Opening Ceremony</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — Career Timeline -->
+  <div class="slide" id="s7">
+    <div class="slide-img"></div>
+    <div class="overlay-light"></div>
+    <div class="slide-content">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1995</div>
+          <div class="tl-role">Support Engineer</div>
+          <div class="tl-org">Apple</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2011</div>
+          <div class="tl-role">Studio Leader</div>
+          <div class="tl-org">Adaptive Path</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2020</div>
+          <div class="tl-role">Design Executive</div>
+          <div class="tl-org">IBM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- Navigation -->
+<button class="nav-btn hidden" id="btn-prev" aria-label="Previous slide">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+<button class="nav-btn" id="btn-next" aria-label="Next slide">
+  <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+</button>
+
+<div class="dots" id="dots"></div>
+<div class="counter" id="counter">1 / 7</div>
+
+<script>
+  const slides  = Array.from(document.querySelectorAll('.slide'));
+  const deck    = document.getElementById('deck');
+  const dotsEl  = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const TOTAL   = slides.length;
+  const LIGHT   = new Set([2, 6]); // 0-indexed: badges slide (2) + timeline slide (6)
+
+  let current = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function updateUI() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = `${current + 1} / ${TOTAL}`;
+    btnPrev.classList.toggle('hidden', current === 0);
+    btnNext.classList.toggle('hidden', current === TOTAL - 1);
+    deck.classList.toggle('light-slide', LIGHT.has(current));
+  }
+
+  function goTo(n) {
+    current = Math.max(0, Math.min(TOTAL - 1, n));
+    updateUI();
+  }
+
+  btnPrev.addEventListener('click', () => goTo(current - 1));
+  btnNext.addEventListener('click', () => goTo(current + 1));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
+  });
+
+  // Touch / swipe
+  let touchX = null;
+  document.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend',   e => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) goTo(current + (dx < 0 ? 1 : -1));
+    touchX = null;
+  }, { passive: true });
+
+  updateUI();
+</script>
+</body>
+</html>
