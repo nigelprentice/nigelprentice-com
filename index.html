@@ -45,10 +45,7 @@
   }
 
   /* ── Overlays ── */
-  .overlay-dark   { position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
-  .overlay-light  { position: absolute; inset: 0; background: rgba(255,255,255,0.88); }
   .overlay-subtle { position: absolute; inset: 0; background: rgba(0,0,0,0.22); }
-  .overlay-mid    { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
 
   /* ── Content layers ── */
   .slide-content {
@@ -126,206 +123,6 @@
     align-self: center;
   }
 
-  /* ─────────────────────────────────────────────
-     SLIDE 3 — Identity (Badges)
-  ───────────────────────────────────────────── */
-  #s3 .slide-img {
-    background-image: url('images/abstract_bg.png');
-    background-color: #f0eeea;
-    background-size: contain;
-    background-position: center;
-  }
-  #s3 .id-caption {
-    position: absolute;
-    bottom: 12%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.28);
-    white-space: nowrap;
-  }
-
-  /* ─────────────────────────────────────────────
-     SLIDE 4 — Design Work
-  ───────────────────────────────────────────── */
-  #s4 .slide-img {
-    background-image: url('images/work_idt.jpg');
-    background-position: center 40%;
-  }
-  #s4 .work-text {
-    position: absolute;
-    bottom: 12%;
-    left: 8%;
-  }
-  #s4 .work-text h2 {
-    font-family: Georgia, serif;
-    font-size: clamp(1.6rem, 3vw, 2.8rem);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
-    color: #fff;
-  }
-  #s4 .work-text p {
-    margin-top: 0.7rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-  }
-
-  /* ─────────────────────────────────────────────
-     SLIDE 5 — Fortune Press
-  ───────────────────────────────────────────── */
-  #s5 { background: #111; }
-  #s5 .press-layout {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: stretch;
-  }
-  #s5 .press-img-col {
-    flex: 0 0 46%;
-    background-image: url('images/nigel_portrait.jpg');
-    background-size: cover;
-    background-position: center top;
-  }
-  #s5 .press-text-col {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 6% 8%;
-    background: #111;
-  }
-  #s5 .press-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 2rem;
-  }
-  #s5 .press-headline {
-    font-family: Georgia, serif;
-    font-size: clamp(1.25rem, 2.2vw, 2rem);
-    font-weight: 400;
-    line-height: 1.4;
-    color: #fff;
-    margin-bottom: 2.8rem;
-  }
-  #s5 .press-meta {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 0.45rem 1.4rem;
-  }
-  #s5 .press-meta .key {
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.22);
-  }
-  #s5 .press-meta .val {
-    font-size: 0.78rem;
-    color: rgba(255,255,255,0.5);
-  }
-
-  /* ─────────────────────────────────────────────
-     SLIDE 6 — IBM Studios Dublin
-  ───────────────────────────────────────────── */
-  #s6 .press-layout {
-    display: flex;
-    width: 100%;
-    height: 100%;
-  }
-  #s6 .dublin-img {
-    flex: 1;
-    background-image: url('images/ibm_opening_1.jpg');
-    background-size: cover;
-    background-position: center;
-  }
-  #s6 .dublin-img2 {
-    flex: 1;
-    background-image: url('images/ibm_studios.png');
-    background-size: cover;
-    background-position: center top;
-  }
-  #s6 .dublin-caption {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    white-space: nowrap;
-    z-index: 2;
-  }
-  #s6 .dublin-caption h2 {
-    font-family: Georgia, serif;
-    font-size: clamp(1.2rem, 2.2vw, 2rem);
-    font-weight: 400;
-    color: #fff;
-    text-shadow: 0 2px 24px rgba(0,0,0,0.8);
-  }
-  #s6 .dublin-caption p {
-    margin-top: 0.5rem;
-    font-size: 0.68rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    text-shadow: 0 1px 12px rgba(0,0,0,0.8);
-  }
-
-  /* ─────────────────────────────────────────────
-     SLIDE 7 — Career Timeline
-  ───────────────────────────────────────────── */
-  #s7 .slide-img {
-    background-image: url('images/abstract_bg.png');
-    background-color: #f0eeea;
-    background-size: cover;
-    background-position: center;
-    filter: brightness(1.02) saturate(0.25);
-  }
-  #s7 .timeline {
-    display: flex;
-    gap: 0;
-    align-items: flex-start;
-    position: relative;
-    z-index: 2;
-  }
-  #s7 .tl-item {
-    flex: 1;
-    padding: 0 4vw;
-    position: relative;
-  }
-  #s7 .tl-item + .tl-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0.4rem;
-    width: 1px; height: 3rem;
-    background: rgba(0,0,0,0.12);
-  }
-  #s7 .tl-year {
-    font-family: Georgia, serif;
-    font-size: clamp(2rem, 3.5vw, 3.5rem);
-    font-weight: 400;
-    color: #1a1a1a;
-    line-height: 1;
-  }
-  #s7 .tl-role {
-    margin-top: 1rem;
-    font-size: clamp(0.68rem, 1.1vw, 0.82rem);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #2a2a2a;
-    line-height: 1.6;
-  }
-  #s7 .tl-org {
-    font-size: clamp(0.58rem, 0.85vw, 0.7rem);
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.32);
-    margin-top: 0.3rem;
-  }
 
   /* ─────────────────────────────────────────────
      Navigation arrows
@@ -379,11 +176,6 @@
     transform: scale(1.4);
   }
 
-  /* Light-slide overrides (badges + timeline slides) */
-  .deck.light-slide .dot       { background: rgba(0,0,0,0.15); }
-  .deck.light-slide .dot.active{ background: rgba(0,0,0,0.5); transform: scale(1.4); }
-  .deck.light-slide .nav-btn svg { stroke: #222; }
-
   /* ── Slide counter ── */
   .counter {
     position: fixed;
@@ -394,10 +186,8 @@
     color: rgba(255,255,255,0.25);
     z-index: 100;
     font-variant-numeric: tabular-nums;
-    transition: color 0.4s;
     user-select: none;
   }
-  .deck.light-slide .counter { color: rgba(0,0,0,0.22); }
 </style>
 </head>
 <body>
@@ -437,75 +227,6 @@
     </div>
   </div>
 
-  <!-- SLIDE 3 — Identity -->
-  <div class="slide" id="s3">
-    <div class="slide-img"></div>
-    <span class="id-caption">Nigel Prentice</span>
-  </div>
-
-  <!-- SLIDE 4 — Design Work -->
-  <div class="slide" id="s4">
-    <div class="slide-img"></div>
-    <div class="overlay-mid"></div>
-    <div class="work-text">
-      <h2>Enterprise<br>Design Thinking</h2>
-      <p>IBM &nbsp;·&nbsp; Global Practice</p>
-    </div>
-  </div>
-
-  <!-- SLIDE 5 — Fortune Press -->
-  <div class="slide" id="s5">
-    <div class="press-layout">
-      <div class="press-img-col"></div>
-      <div class="press-text-col">
-        <div class="press-tag">Feature &nbsp;·&nbsp; Fortune</div>
-        <div class="press-headline">How IBM is Training<br>Its Workforce to Think<br>Like Designers</div>
-        <div class="press-meta">
-          <span class="key">Journalist</span><span class="val">Brian O'Keefe</span>
-          <span class="key">Publisher</span><span class="val">Fortune</span>
-          <span class="key">Date</span><span class="val">December 2017 &amp; January 2018</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDE 6 — IBM Studios Dublin -->
-  <div class="slide" id="s6">
-    <div class="press-layout">
-      <div class="dublin-img"></div>
-      <div class="dublin-img2"></div>
-    </div>
-    <div class="overlay-dark"></div>
-    <div class="dublin-caption">
-      <h2>IBM Studios Dublin</h2>
-      <p>Opening Ceremony</p>
-    </div>
-  </div>
-
-  <!-- SLIDE 7 — Career Timeline -->
-  <div class="slide" id="s7">
-    <div class="slide-img"></div>
-    <div class="overlay-light"></div>
-    <div class="slide-content">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-year">1995</div>
-          <div class="tl-role">Support Engineer</div>
-          <div class="tl-org">Apple</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2011</div>
-          <div class="tl-role">Studio Leader</div>
-          <div class="tl-org">Adaptive Path</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2020</div>
-          <div class="tl-role">Design Executive</div>
-          <div class="tl-org">IBM</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div><!-- /deck -->
 
@@ -518,7 +239,7 @@
 </button>
 
 <div class="dots" id="dots"></div>
-<div class="counter" id="counter">1 / 7</div>
+<div class="counter" id="counter">1 / 2</div>
 
 <script>
   const slides  = Array.from(document.querySelectorAll('.slide'));
@@ -528,7 +249,7 @@
   const btnPrev = document.getElementById('btn-prev');
   const btnNext = document.getElementById('btn-next');
   const TOTAL   = slides.length;
-  const LIGHT   = new Set([2, 6]); // 0-indexed: badges slide (2) + timeline slide (6)
+  const LIGHT   = new Set(); // no light slides remaining
 
   let current = 0;
 
@@ -547,7 +268,6 @@
     counter.textContent = `${current + 1} / ${TOTAL}`;
     btnPrev.classList.toggle('hidden', current === 0);
     btnNext.classList.toggle('hidden', current === TOTAL - 1);
-    deck.classList.toggle('light-slide', LIGHT.has(current));
   }
 
   function goTo(n) {
