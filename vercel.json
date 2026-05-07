@@ -2,6 +2,10 @@
 {
   "rewrites": [
     {
+      "source": "/omni-demo",
+      "destination": "https://omni-demo-wheat.vercel.app/"
+    },
+    {
       "source": "/omni-demo/:path*",
       "destination": "https://omni-demo-wheat.vercel.app/:path*"
     }
