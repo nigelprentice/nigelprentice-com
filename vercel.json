@@ -1,0 +1,10 @@
+
+{
+  "_comment": "This rewrite proxies omni-demo through the main domain",
+  "rewrites": [
+    {
+      "source": "/omni-demo/:path*",
+      "destination": "https://omni-demo-wheat.vercel.app/:path*"
+    }
+  ]
+}
