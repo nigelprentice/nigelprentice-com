@@ -5,5 +5,12 @@
       "source": "/omni-demo/:path*",
       "destination": "https://omni-demo-wheat.vercel.app/:path*"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/omni-demo",
+      "destination": "/omni-demo/",
+      "permanent": true
+    }
   ]
 }
