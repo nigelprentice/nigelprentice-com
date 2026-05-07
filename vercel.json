@@ -1,20 +1,20 @@
 
 {
-  "rewrites": [
-    {
-      "source": "/omni-demo",
-      "destination": "https://omni-demo-wheat.vercel.app/"
-    },
-    {
-      "source": "/omni-demo/:path*",
-      "destination": "https://omni-demo-wheat.vercel.app/:path*"
-    }
-  ],
   "redirects": [
     {
       "source": "/omni-demo",
       "destination": "/omni-demo/",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/omni-demo/",
+      "destination": "https://omni-demo-wheat.vercel.app/"
+    },
+    {
+      "source": "/omni-demo/:path*",
+      "destination": "https://omni-demo-wheat.vercel.app/:path*"
     }
   ]
 }
